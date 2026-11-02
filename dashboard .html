@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gdefensekeychain | Elite Luxury Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.2);
+            --dark-void: #0a0a0a;
+            --panel-bg: #121212;
+            --input-bg: #1a1a1a;
+            --text-pure: #ffffff;
+            --text-dim: #999999;
+            --whatsapp-green: #25d366;
+            --instagram-pink: #e1306c;
+            --tiktok-dark: #00f2fe;
+        }
+
+        body {
+            background-color: var(--dark-void);
+            color: var(--text-pure);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Luxury Header Interface & Logo Optimization */
+        header {
+            text-align: center;
+            padding: 40px 15px;
+            background: linear-gradient(180deg, #000000 0%, var(--dark-void) 100%);
+            border-bottom: 1px solid #1c1c1c;
+        }
+
+        .logo-wrapper img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #ffffff 30%, #a6a6a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px var(--gold-glow);
+            word-break: break-word;
+        }
+
+        .sub-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        nav {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-pure);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        /* Welcome Intro Video Section Styling */
+        .welcome-video-section {
+            max-width: 900px;
+            margin: 40px auto 20px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #121212;
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+        }
+
+        .video-container video, .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            color: var(--gold);
+        }
+
+        /* Layout Framework */
+        .luxury-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .catalog-header {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-bottom: 1px solid #1c1c1c;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .catalog-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+            }
+        }
+
+        .catalog-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .catalog-header p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Grid Adaptive Layout */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        /* Premium Card Design Architecture */
+        .product-card {
+            background: var(--panel-bg);
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px var(--gold-glow);
+        }
+
+        /* Media Showcase Box */
+        .image-box {
+            width: 100%;
+            height: 300px;
+            background: #0d0d0d;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Floating Like Button Engine */
+        .like-trigger {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #222;
+            color: var(--text-pure);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .like-trigger:hover {
+            background: var(--text-pure);
+            color: #000;
+        }
+
+        .like-trigger.liked i {
+            color: #ff3838;
+        }
+
+        /* Information & Button Configurations */
+        .details-box {
+            padding: 20px;
+        }
+
+        .item-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .stars-rating {
+            color: var(--gold);
+            font-size: 0.75rem;
+            margin-bottom: 12px;
+        }
+
+        .stars-rating span {
+            color: var(--text-dim);
+            margin-left: 6px;
+        }
+
+        .pricing {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-pure);
+            margin-bottom: 15px;
+        }
+
+        /* Strategic Purchase Call-To-Action Layout */
+        .action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-buy-now {
+            background: var(--whatsapp-green);
+            color: #ffffff;
+            border: none;
+            font-weight: 700;
+        }
+
+        .btn-pod {
+            background: transparent;
+            color: var(--text-pure);
+            border: 1px solid #333;
+            font-weight: 500;
+        }
+
+        .btn-buy-now, .btn-pod {
+            padding: 10px 8px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-buy-now:hover {
+            opacity: 0.9;
+        }
+
+        .btn-pod:hover {
+            border-color: var(--gold);
+            background: rgba(212,175,55,0.05);
+            color: var(--gold);
+        }
+
+        /* SOCIAL MEDIA MODAL OVERLAY (FOR P.O.D / CONTACT) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            z-index: 1000;
+            padding: 15px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: #141414;
+            border: 1px solid #262626;
+            width: 100%;
+            max-width: 440px;
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            text-align: center;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .close-modal-btn:hover {
+            color: var(--text-pure);
+        }
+
+        .modal-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .modal-box p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+        }
+
+        /* Social Link Buttons in Modal */
+        .social-buttons-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #fff;
+        }
+
+        .btn-tiktok {
+            background: #000000;
+            border: 1px solid #333;
+            color: #fff;
+        }
+
+        .btn-tiktok i {
+            color: #00f2fe;
+            text-shadow: 0 0 8px #fe0055;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #444;
+            font-size: 0.75rem;
+            border-top: 1px solid #111;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-wrapper">
+            <img src="1.jpg" alt="Gdefensekeychain Logo">
+            <h1>Gdefensekeychain</h1>
+            <p class="sub-tag">The Royal Realm of Fashion</p>
+        </div>
+        <nav>
+            <a href="#" class="nav-link active">All Collections</a>
+            
+            <a href="#" class="nav-link">Bespoke Accessories</a>
+            <a href="#" class="nav-link">Streetwear</a>
+        </nav>
+    </header>
+
+    <!-- Welcome Intro Video Section -->
+    <section class="welcome-video-section">
+        <h3 class="video-title">Welcome to Gdefensekeychain</h3>
+        <div class="video-container">
+            <!-- CHANGE THE VIDEO SOURCE BELOW WHEN YOU UPLOAD YOUR VIDEO -->
+            <!-- Example: <video src="your-video-file.mp4" controls autoplay muted loop></video> -->
+       <video controls autoplay muted playsinline style="width: 100%; height: 400px; object-fit: cover;">
+    <source src="1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+
+
+        </div>
+    </section>
+
+    <main class="luxury-container">
+        <div class="catalog-header">
+            <h2>The 2026 Lookbook</h2>
+            <p><span id="item-count">0</span> Bespoke Concepts Available</p>
+        </div>
+
+        <div class="products-grid" id="products-grid"></div>
+    </main>
+
+    <!-- Social Media Popup Modal (Opened by P.O.D Button) -->
+    <div class="modal-overlay" id="social-modal">
+        <div class="modal-box">
+            <button class="close-modal-btn" onclick="closeSocialModal()">&times;</button>
+            <h3>Connect With Us</h3>
+            <p id="social-modal-subtitle">Follow Gdefensekeychain on our official social channels</p>
+
+            <div class="social-buttons-grid">
+                <!-- 🔗 CHANGE INSTAGRAM LINK HERE -->
+                <a href="https://instagram.com/your_instagram_username" target="_blank" class="social-btn btn-instagram">
+                    <i class="fa-brands fa-instagram fa-lg"></i> Instagram Store
+                </a>
+
+                <!-- 🔗 CHANGE TIKTOK LINK HERE -->
+                <a href="https://www.tiktok.com/@g_defense_keychain?_r=1&_t=ZN-9B4hx06n7eo" target="_blank" class="social-btn btn-tiktok">
+                    <i class="fa-brands fa-tiktok fa-lg"></i> TikTok Showcase
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Gdefensekeychain Industries. Built for Supreme Elegance.</p>
+    </footer>
+
+    <script>
+        // ==========================================
+        // ⚙️ CONFIGURATION SETTING
+        // WhatsApp number set to +13158859403
+        // ==========================================
+        const WHATSAPP_NUMBER = "13158859403"; 
+        const WEBSITE_BRAND_NAME = "Gdefensekeychain";
+
+        // Product Array Catalog (Updated with Brand Name)
+        const gdefensekeychainProducts = [
+            { id: 1, name: "Inbox to get goodie boogie Complete set keychain for $60 available in all colors", price: 60, stars: 5, img: "3.jpg" },
+            { id: 2, name: "Complete defense keychain going ", price: 70, stars: 4, img: "4.jpg" },
+            { id: 3, name: "HMU to get your Silver defense keychain ", price: 60, stars: 5, img: "5.jpg" },
+            { id: 4, name: "Pink defense keychain going for", price: 60, stars: 5, img: "6.jpg" },
+            { id: 5, name: "Brown defense keychain going for", price: 55, stars: 4, img: "7.jpg" },
+            { id: 6, name: "High-Top Suede Crest Sneaker", price: 195, stars: 5, img: "03.jpg" },
+            { id: 7, name: "Embossed Denim & Belt Set", price: 140, stars: 4, img: "02.jpg" },
+            { id: 8, name: "Apron & Belt Set", price: 140, stars: 4, img: "001.jpg" },
+            { id: 9, name: "Tailored Folded Cargo Pants", price: 175, stars: 4, img: "01.jpg" },
+            { id: 10, name: "Cargo Pants", price: 175, stars: 4, img: "07.jpg" },
+            { id: 11, name: "2 in 1 Tailored Pants", price: 175, stars: 4, img: "08.jpg" },
+            { id: 12, name: "Gdefensekeychain Limited Edition Dress", price: 850, stars: 5, img: "22.jpg" },
+            { id: 13, name: "Queen Limited Edition", price: 1850, stars: 5, img: "12.jpg" },
+            { id: 14, name: "Limited Edition Wristwatch", price: 850, stars: 5, img: "012.jpg" }
+        ];
+
+        // Initial Rendering Engine Loop
+        function renderLuxuryCatalog() {
+            const grid = document.getElementById('products-grid');
+            document.getElementById('item-count').textContent = gdefensekeychainProducts.length;
+            grid.innerHTML = '';
+
+            gdefensekeychainProducts.forEach(product => {
+                let starsHTML = '';
+                for (let i = 0; i < 5; i++) {
+                    starsHTML += i < product.stars ? `<i class="fa-solid fa-star"></i>` : `<i class="fa-regular fa-star"></i>`;
+                }
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="image-box">
+                        <button class="like-trigger" onclick="toggleLike(this)">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                        ${product.img ? `<img src="${product.img}" alt="${product.name}">` : `<div class="media-placeholder">GK</div>`}
+                    </div>
+                    <div class="details-box">
+                        <div class="item-title">${product.name}</div>
+                        <div class="stars-rating">${starsHTML}<span>(${product.stars}.0)</span></div>
+                        <div class="pricing">$${product.price}</div>
+                        <div class="action-row">
+                            <button class="btn-buy-now" onclick="buyOnWhatsApp(${product.id})">
+                                <i class="fa-brands fa-whatsapp"></i> Buy Now
+                            </button>
+                            <button class="btn-pod" onclick="openSocialModal('${product.name}')">
+                                <i class="fa-solid fa-share-nodes"></i> P.O.D
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Like Button Script Interface
+        function toggleLike(btn) {
+            btn.classList.toggle('liked');
+            const icon = btn.querySelector('i');
+            icon.className = btn.classList.contains('liked') ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+        }
+
+        // Direct WhatsApp Buy Now Trigger
+        function buyOnWhatsApp(productId) {
+            const product = gdefensekeychainProducts.find(p => p.id === productId);
+            
+            // Required automatic message string format
+            const message = `hi, "${WEBSITE_BRAND_NAME}" I will like to order this send me your catalog\n\n` +
+                            `🛍️ *Selected Item:* ${product.name}\n` +
+                            `💰 *Price:* $${product.price}`;
+
+            const encryptedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encryptedMessage}`;
+
+            window.location.href = whatsappURL;
+        }
+
+        // Social Modal (P.O.D) Controls
+        function openSocialModal(productName) {
+            const modal = document.getElementById('social-modal');
+            document.getElementById('social-modal-subtitle').textContent = `Inquiring about: ${productName}`;
+            modal.classList.add('active');
+        }
+
+        function closeSocialModal() {
+            document.getElementById('social-modal').classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', renderLuxuryCatalog);
+    </script>
+</body>
+</html>
