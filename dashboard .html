@@ -21,7 +21,7 @@
             --input-bg: #1a1a1a;
             --text-pure: #ffffff;
             --text-dim: #999999;
-            --whatsapp-green: #25d366;
+            --signal-blue: #3a76f0;
             --instagram-pink: #e1306c;
             --tiktok-dark: #00f2fe;
         }
@@ -94,7 +94,7 @@
             border-bottom: 2px solid var(--gold);
         }
 
-        /* Welcome Intro Video Section Styling */
+        /* Welcome Intro Video Section Styling - Restyled & Fitted Properly */
         .welcome-video-section {
             max-width: 900px;
             margin: 40px auto 20px auto;
@@ -105,29 +105,37 @@
         .video-container {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
             background: #121212;
             border: 1px solid #222;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            margin-top: 20px;
         }
 
-        .video-container video, .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-container video {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-height: 480px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            background: #000;
         }
 
         .video-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             letter-spacing: 2px;
             margin-bottom: 12px;
             color: var(--gold);
+        }
+
+        .welcome-video-section p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         /* Layout Framework */
@@ -188,21 +196,36 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px var(--gold-glow);
         }
 
-        /* Media Showcase Box */
+        /* Media Showcase Box - Restyled & Fitted Perfectly */
         .image-box {
             width: 100%;
-            height: 300px;
+            height: 320px;
             background: #0d0d0d;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid #1a1a1a;
         }
 
         .image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .image-box img {
+            transform: scale(1.05);
+        }
+
+        .media-placeholder {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
         }
 
         /* Floating Like Button Engine */
@@ -274,7 +297,7 @@
         }
 
         .btn-buy-now {
-            background: var(--whatsapp-green);
+            background: var(--signal-blue);
             color: #ffffff;
             border: none;
             font-weight: 700;
@@ -312,7 +335,7 @@
             color: var(--gold);
         }
 
-        /* SOCIAL MEDIA MODAL OVERLAY (FOR P.O.D / CONTACT) */
+        /* SOCIAL MEDIA & FORM MODAL OVERLAY (FOR P.O.D / CONTACT) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -330,6 +353,7 @@
             transition: opacity 0.4s ease;
             z-index: 1000;
             padding: 15px;
+            overflow-y: auto;
         }
 
         .modal-overlay.active {
@@ -341,7 +365,7 @@
             background: #141414;
             border: 1px solid #262626;
             width: 100%;
-            max-width: 440px;
+            max-width: 460px;
             border-radius: 12px;
             padding: 30px;
             position: relative;
@@ -349,6 +373,7 @@
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 30px 60px rgba(0,0,0,0.8);
             text-align: center;
+            margin: auto;
         }
 
         .modal-overlay.active .modal-box {
@@ -381,14 +406,79 @@
         .modal-box p {
             color: var(--text-dim);
             font-size: 0.85rem;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+        }
+
+        /* Order Form Styling inside Modal */
+        .order-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-group input {
+            background: var(--input-bg);
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 10px 12px;
+            color: var(--text-pure);
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--gold);
+        }
+
+        .btn-submit-order {
+            background: var(--gold);
+            color: #000;
+            font-weight: 700;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            transition: opacity 0.3s ease;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        .btn-submit-order:hover {
+            opacity: 0.9;
+        }
+
+        .modal-divider {
+            border: 0;
+            height: 1px;
+            background: #222;
+            margin: 20px 0;
         }
 
         /* Social Link Buttons in Modal */
         .social-buttons-grid {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .social-btn {
@@ -396,11 +486,11 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 14px 20px;
+            padding: 12px 20px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
             transition: transform 0.2s ease, opacity 0.2s ease;
         }
@@ -445,31 +535,21 @@
         </div>
         <nav>
             <a href="#" class="nav-link active">Premium Defense Keychains</a>
-            
             <a href="#" class="nav-link">Bespoke Accessories</a>
             <a href="#" class="nav-link">Carry Safe</a>
-             <a href="#" class="nav-link">Live Confident.</a>
+            <a href="#" class="nav-link">Live Confident.</a>
         </nav>
     </header>
 
     <!-- Welcome Intro Video Section -->
     <section class="welcome-video-section">
-        <h3 class="video-title">WELCOME TO GDEFENSEKEYCHAIN
-            
-        </h3>
-        <p>Confidence Begins With Being Prepared.
-Discover our collection of stylish defense keychains and personal safety accessories, designed to help you feel confident wherever life takes you.
-WORLDWIDE DELIVERY AVAILABLE</p>
+        <h3 class="video-title">WELCOME TO GDEFENSEKEYCHAIN</h3>
+        <p>Confidence Begins With Being Prepared. Discover our collection of stylish defense keychains and personal safety accessories, designed to help you feel confident wherever life takes you. WORLDWIDE DELIVERY AVAILABLE</p>
         <div class="video-container">
-            <!-- CHANGE THE VIDEO SOURCE BELOW WHEN YOU UPLOAD YOUR VIDEO -->
-            <!-- Example: <video src="your-video-file.mp4" controls autoplay muted loop></video> -->
-       <video controls autoplay muted playsinline style="width: 100%; height: 400px; object-fit: cover;">
-    <source src="1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-
-
-
+            <video controls autoplay muted playsinline>
+                <source src="1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
 
@@ -482,20 +562,43 @@ WORLDWIDE DELIVERY AVAILABLE</p>
         <div class="products-grid" id="products-grid"></div>
     </main>
 
-    <!-- Social Media Popup Modal (Opened by P.O.D Button) -->
+    <!-- Social Media & Form Popup Modal (Opened by P.O.D Button) -->
     <div class="modal-overlay" id="social-modal">
         <div class="modal-box">
             <button class="close-modal-btn" onclick="closeSocialModal()">&times;</button>
-            <h3>Connect With Us</h3>
-            <p id="social-modal-subtitle">Follow Gdefensekeychain on our official social channels</p>
+            <h3>Place Order & Connect</h3>
+            <p id="social-modal-subtitle">Fill in your details or connect with us directly</p>
+
+            <!-- Customer Detail Form -->
+            <form class="order-form" id="pod-order-form" onsubmit="submitOrderForm(event)">
+                <div class="form-group">
+                    <label for="customer-name">Full Name</label>
+                    <input type="text" id="customer-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-address">Delivery Address</label>
+                    <input type="text" id="customer-address" placeholder="Enter street address & city" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">Phone Number</label>
+                    <input type="tel" id="customer-phone" placeholder="Enter phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-email">Email Address</label>
+                    <input type="email" id="customer-email" placeholder="Enter email address" required>
+                </div>
+                <button type="submit" class="btn-submit-order">Submit Details</button>
+            </form>
+
+            <hr class="modal-divider">
 
             <div class="social-buttons-grid">
-                <!-- 🔗 CHANGE INSTAGRAM LINK HERE -->
+                <!-- 🔗 INSTAGRAM LINK -->
                 <a href="https://instagram.com/your_instagram_username" target="_blank" class="social-btn btn-instagram">
                     <i class="fa-brands fa-instagram fa-lg"></i> Instagram Store
                 </a>
 
-                <!-- 🔗 CHANGE TIKTOK LINK HERE -->
+                <!-- 🔗 TIKTOK LINK -->
                 <a href="https://www.tiktok.com/@g_defense_keychain?_r=1&_t=ZN-9B4hx06n7eo" target="_blank" class="social-btn btn-tiktok">
                     <i class="fa-brands fa-tiktok fa-lg"></i> TikTok Showcase
                 </a>
@@ -510,19 +613,20 @@ WORLDWIDE DELIVERY AVAILABLE</p>
     <script>
         // ==========================================
         // ⚙️ CONFIGURATION SETTING
-        // WhatsApp number set to +13158859403
+        // Signal number set to +13092488232
         // ==========================================
-        const WHATSAPP_NUMBER = "13158859403"; 
+        const SIGNAL_NUMBER = "13092488232"; 
         const WEBSITE_BRAND_NAME = "Gdefensekeychain";
 
-        // Product Array Catalog (Updated with Brand Name)
+        let currentSelectedProduct = "";
+
+        // Product Array Catalog
         const gdefensekeychainProducts = [
             { id: 1, name: "Inbox to get goodie boogie Complete set keychain for $60 available in all colors", price: 60, stars: 5, img: "3.jpg" },
             { id: 2, name: "Complete defense keychain going ", price: 70, stars: 4, img: "4.jpg" },
             { id: 3, name: "HMU to get your Silver defense keychain ", price: 60, stars: 5, img: "5.jpg" },
             { id: 4, name: "Pink defense keychain going for", price: 60, stars: 5, img: "6.jpg" },
             { id: 5, name: "Brown defense keychain going for", price: 55, stars: 4, img: "7.jpg" },
-    
         ];
 
         // Initial Rendering Engine Loop
@@ -551,8 +655,8 @@ WORLDWIDE DELIVERY AVAILABLE</p>
                         <div class="stars-rating">${starsHTML}<span>(${product.stars}.0)</span></div>
                         <div class="pricing">$${product.price}</div>
                         <div class="action-row">
-                            <button class="btn-buy-now" onclick="buyOnWhatsApp(${product.id})">
-                                <i class="fa-brands fa-whatsapp"></i> Buy Now
+                            <button class="btn-buy-now" onclick="buyOnSignal(${product.id})">
+                                <i class="fa-solid fa-comment-dots"></i> Buy Now
                             </button>
                             <button class="btn-pod" onclick="openSocialModal('${product.name}')">
                                 <i class="fa-solid fa-share-nodes"></i> P.O.D
@@ -571,23 +675,24 @@ WORLDWIDE DELIVERY AVAILABLE</p>
             icon.className = btn.classList.contains('liked') ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
         }
 
-        // Direct WhatsApp Buy Now Trigger
-        function buyOnWhatsApp(productId) {
+        // Direct Signal Buy Now Trigger
+        function buyOnSignal(productId) {
             const product = gdefensekeychainProducts.find(p => p.id === productId);
             
-            // Required automatic message string format
-            const message = `hi, "${WEBSITE_BRAND_NAME}" I will like to order this send me your catalog\n\n` +
+            const message = `hi, "${WEBSITE_BRAND_NAME}" I would like to order this item:\n\n` +
                             `🛍️ *Selected Item:* ${product.name}\n` +
                             `💰 *Price:* $${product.price}`;
 
             const encryptedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encryptedMessage}`;
+            // Signal protocol link to contact number directly
+            const signalURL = `https://signal.me/#p/+${SIGNAL_NUMBER}`;
 
-            window.location.href = whatsappURL;
+            window.location.href = signalURL;
         }
 
         // Social Modal (P.O.D) Controls
         function openSocialModal(productName) {
+            currentSelectedProduct = productName;
             const modal = document.getElementById('social-modal');
             document.getElementById('social-modal-subtitle').textContent = `Inquiring about: ${productName}`;
             modal.classList.add('active');
@@ -597,7 +702,34 @@ WORLDWIDE DELIVERY AVAILABLE</p>
             document.getElementById('social-modal').classList.remove('active');
         }
 
+        // Form Submission Handler
+        function submitOrderForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('customer-name').value;
+            const address = document.getElementById('customer-address').value;
+            const phone = document.getElementById('customer-phone').value;
+            const email = document.getElementById('customer-email').value;
+
+            alert(`Thank you, ${name}! Your details for "${currentSelectedProduct || 'Custom Order'}" have been received successfully. We will contact you shortly.`);
+            document.getElementById('pod-order-form').reset();
+            closeSocialModal();
+        }
+
         document.addEventListener('DOMContentLoaded', renderLuxuryCatalog);
     </script>
+
+    <!-- Start of Tawk.to Live Chat Integration Script -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6adfb5cf877dae34756ced76/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!-- End of Tawk.to Script -->
 </body>
 </html>
